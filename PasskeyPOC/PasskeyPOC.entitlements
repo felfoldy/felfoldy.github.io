@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>webcredentials: www.felfoldy.github.io</string>
+		<string>webcredentials:felfoldy.github.io</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>

@@ -13,33 +13,53 @@ struct ContentView: View {
     
     @State var userID: String = ""
     @State var challenge: String = ""
+    @State var userName: String = ""
+    
+    let platformProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(
+        relyingPartyIdentifier: "felfoldy.github.io"
+    )
     
     var body: some View {
-        VStack {
-            
-            TextField("userID", text: $userID)
-            
-            TextField("challenge", text: $challenge)
-            
-            Button("create passkey") {
-                let platformProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: "felfoldy.github.io")
+        Form {
+            Section("Create") {
+                TextField("user name", text: $userName)
                 
-                let challengeData = challenge.data(using: .utf8)!
-                let userIDData = userID.data(using: .utf8)!
+                TextField("userID", text: $userID)
                 
-                let request = platformProvider.createCredentialRegistrationRequest(
-                    challenge: challengeData,
-                    name: "Some Name",
-                    userID: userIDData
-                )
+                TextField("challenge", text: $challenge)
                 
-                performRequest(request: request)
+                Button("create passkey") {
+                    let platformProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: "felfoldy.github.io")
+                    
+                    let challengeData = challenge.data(using: .utf8)!
+                    let userIDData = userID.data(using: .utf8)!
+                    
+                    let request = platformProvider.createCredentialRegistrationRequest(
+                        challenge: challengeData,
+                        name: userName,
+                        userID: userIDData
+                    )
+                    
+                    perform(request: request)
+                }
+            }
+            
+            Section("Assert") {
+                TextField("challenge", text: $challenge)
+                
+                Button("assert passkey") {
+                    let challengeData = challenge.data(using: .utf8)!
+                    
+                    let request = platformProvider.createCredentialAssertionRequest(challenge: challengeData)
+                    
+                    perform(request: request)
+                }
             }
         }
-        .padding()
+        .textFieldStyle(.roundedBorder)
     }
     
-    func performRequest(request: ASAuthorizationRequest) {
+    func perform(request: ASAuthorizationRequest) {
         Task {
             do {
                 let result = try await authorizationController.performRequest(request)
