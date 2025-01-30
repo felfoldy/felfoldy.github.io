@@ -1,0 +1,69 @@
+{
+  "originHash" : "314e1e4d37336c3ffe73b1dfb0de8843b8aee7add6b126962fcc17743aa909e0",
+  "pins" : [
+    {
+      "identity" : "apollo-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apollographql/apollo-ios.git",
+      "state" : {
+        "revision" : "e98e9d3b398b6005149074d51b097e31aaa44f63",
+        "version" : "1.17.0"
+      }
+    },
+    {
+      "identity" : "debugtools",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/felfoldy/DebugTools",
+      "state" : {
+        "revision" : "9f691b8c6dff83cdef4ec04cc654b5a294429683",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "logtools",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/felfoldy/LogTools.git",
+      "state" : {
+        "revision" : "98c2caec20fdd963bf0a9c80c57223a0e19be3b6",
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "sqlite.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stephencelis/SQLite.swift.git",
+      "state" : {
+        "revision" : "a95fc6df17d108bd99210db5e8a9bac90fe984b8",
+        "version" : "0.15.3"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    },
+    {
+      "identity" : "swiftpy",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/felfoldy/SwiftPy",
+      "state" : {
+        "revision" : "541bd9eb07b80045b17496ea658106f1321a753d",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "swiftpyconsole",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/felfoldy/SwiftPyConsole",
+      "state" : {
+        "branch" : "main",
+        "revision" : "77dc2ddb8fb94efb09b49f57eb167de21e624ecf"
+      }
+    }
+  ],
+  "version" : 3
+}

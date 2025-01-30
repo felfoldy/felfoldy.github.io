@@ -1,0 +1,66 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+scalar _FieldSet
+scalar _Any
+type Query {
+  "Passkey Registration options step"
+  pocGetPasskeyRegistrationOptions(input: PocGetPasskeyRegistrationOptionsInput!): PocGetPasskeyRegistrationOptionsPayload!
+  "Passkey Authentication options step"
+  pocGetPasskeyAuthenticationOptions(input: PocGetPasskeyAuthenticationOptionsInput!): PocGetPasskeyAuthenticationOptionsPayload!
+  _service: _Service!
+}
+type Mutation {
+  "Passkey Registration saving step"
+  pocSavePasskey(input: PocSavePasskeyInput!): PocSavePasskeyPayload!
+  "Passkey Authentication checking step"
+  pocValidatePasskey(input: PocValidatePasskeyInput!): PocValidatePasskeyPayload!
+}
+type PocGetPasskeyRegistrationOptionsPayload {
+  session: String!
+  options: String!
+}
+type PocGetPasskeyAuthenticationOptionsPayload {
+  session: String!
+  options: String!
+}
+type PocSavePasskeyPayload {
+  verified: Boolean!
+}
+type PocValidatePasskeyPayload {
+  verified: Boolean!
+}
+type _Service {
+  sdl: String
+}
+input PocGetPasskeyRegistrationOptionsInput {
+  username: String!
+  challenge: String!
+  credentials: String
+}
+input PocGetPasskeyAuthenticationOptionsInput {
+  username: String!
+  challenge: String!
+}
+input PocSavePasskeyInput {
+  session: String!
+  response: String!
+}
+input PocValidatePasskeyInput {
+  session: String!
+  response: String!
+}
+directive @key(fields: _FieldSet!, resolvable: Boolean = true) on OBJECT | INTERFACE
+directive @requires(fields: _FieldSet!) on FIELD_DEFINITION
+directive @provides(fields: _FieldSet!) on FIELD_DEFINITION
+directive @external(reason: String) on OBJECT | FIELD_DEFINITION
+directive @tag(name: String!) on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+directive @extends on OBJECT | INTERFACE
+"Exposes a URL that specifies the behavior of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behavior of this scalar."
+    url: String!
+  ) on SCALAR
+"Indicates exactly one field must be supplied and this field must not be `null`."
+directive @oneOf on INPUT_OBJECT
