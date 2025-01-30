@@ -1,0 +1,29 @@
+query PocGetPasskeyRegistrationOptions($reginput: PocGetPasskeyRegistrationOptionsInput!)
+{
+  pocGetPasskeyRegistrationOptions(input: $reginput) {
+    session,
+    options
+  }
+}
+
+query PocGetPasskeyAuthenticationOptions($authinput: PocGetPasskeyAuthenticationOptionsInput!)
+{
+  pocGetPasskeyAuthenticationOptions(input: $authinput) {
+    session,
+    options
+  }
+}
+
+mutation PocSavePasskey($saveinput: PocSavePasskeyInput!)
+{
+  pocSavePasskey(input: $saveinput) {
+    verified
+  }
+}
+
+mutation PocValidatePasskey($verifyinput: PocValidatePasskeyInput!)
+{
+  pocValidatePasskey(input: $verifyinput) {
+    verified
+  }
+}

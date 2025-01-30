@@ -1,0 +1,29 @@
+{
+  "schemaNamespace" : "PasskeyPOC",
+  "input" : {
+    "operationSearchPaths" : [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "**/*.graphqls"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "none" : {
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./PasskeyPOC",
+      "moduleType" : {
+        "embeddedInTarget" : {
+          "name" : "PasskeyPOC"
+        }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  }
+}
