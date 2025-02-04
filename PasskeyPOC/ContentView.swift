@@ -9,6 +9,8 @@ import SwiftUI
 import AuthenticationServices
 import LogTools
 import SwiftPyConsole
+import Apollo
+import SwiftPy
 
 let log = Logger()
 
@@ -19,6 +21,8 @@ struct ContentView: View {
     @State var userID: String = ""
     @State var challenge: String = ""
     @State var userName: String = ""
+    @State var request: Cancellable?
+    @State var passkeyAction = PasskeyAction()
     
     let platformProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(
         relyingPartyIdentifier: "felfoldy.github.io"
@@ -30,23 +34,8 @@ struct ContentView: View {
                 Section("Create") {
                     TextField("user name", text: $userName)
                     
-                    TextField("userID", text: $userID)
-                    
-                    TextField("challenge", text: $challenge)
-                    
                     Button("create passkey") {
-                        let challengeData = challenge.data(using: .utf8)!
-                        let userIDData = userID.data(using: .utf8)!
-                        
-                        let request = platformProvider.createCredentialRegistrationRequest(
-                            challenge: challengeData,
-                            name: userName,
-                            userID: userIDData
-                        )
-                        
-                        log.info("Send create passkey request: \(request)")
-                        
-                        perform(request: request)
+                        Interpreter.run("query_reg_options()")
                     }
                 }
                 
@@ -64,19 +53,17 @@ struct ContentView: View {
                 }
             }
             .textFieldStyle(.roundedBorder)
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("", systemImage: "apple.terminal.fill") {
-                        showConsole = true
+            .onAppear {
+                let regOptions = #def("query_reg_options") {
+                    Task {
+                        do {
+                            try await passkeyAction.register(username: userName)
+                        } catch {
+                            log.critical(error.localizedDescription)
+                        }
                     }
                 }
-            }
-            .sheet(isPresented: $showConsole) {
-                NavigationStack {
-                    PythonConsoleView()
-                        .navigationTitle("Console")
-                        .navigationBarTitleDisplayMode(.inline)
-                }
+                Interpreter.main.bind(regOptions)
             }
         }
     }

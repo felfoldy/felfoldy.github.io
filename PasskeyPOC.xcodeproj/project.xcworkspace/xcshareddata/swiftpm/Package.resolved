@@ -1,5 +1,5 @@
 {
-  "originHash" : "314e1e4d37336c3ffe73b1dfb0de8843b8aee7add6b126962fcc17743aa909e0",
+  "originHash" : "993c7ac96064f27383554c15db2d8bf0f0d36f5190cec68be86fed1cb5ffc2d1",
   "pins" : [
     {
       "identity" : "apollo-ios",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "9f691b8c6dff83cdef4ec04cc654b5a294429683",
         "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "highlightr",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/raspu/Highlightr",
+      "state" : {
+        "revision" : "bcf2d0590f32ac2528feb72d7e34f5b463801a47",
+        "version" : "2.2.1"
       }
     },
     {
@@ -51,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/felfoldy/SwiftPy",
       "state" : {
-        "revision" : "541bd9eb07b80045b17496ea658106f1321a753d",
-        "version" : "0.2.0"
+        "revision" : "fa9bd4c10fa08e3325c4052d11e084806053c1ba",
+        "version" : "0.2.3"
       }
     },
     {
@@ -61,7 +70,7 @@
       "location" : "https://github.com/felfoldy/SwiftPyConsole",
       "state" : {
         "branch" : "main",
-        "revision" : "77dc2ddb8fb94efb09b49f57eb167de21e624ecf"
+        "revision" : "136fa476647bc83b14cfffc525208ac26380546d"
       }
     }
   ],
