@@ -28,7 +28,13 @@ struct ContentView: View {
                 }
                 
                 Button("Login", systemImage: "person.badge.key") {
-                    
+                    Task {
+                        do {
+                            try await passkeyAction.assert(username: username)
+                        } catch {
+                            log.critical(error.localizedDescription)
+                        }
+                    }
                 }
             }
             .padding()
@@ -40,7 +46,7 @@ struct ContentView: View {
                     
                     Task {
                         do {
-                            try await passkeyAction.register(username: username)
+                            _ = try await passkeyAction.register(username: username)
                         } catch {
                             log.critical(error.localizedDescription)
                         }
