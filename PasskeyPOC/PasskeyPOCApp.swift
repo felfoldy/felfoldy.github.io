@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import SwiftPyConsole
 
 @main
 struct PasskeyPOCApp: App {
+    init() {
+        SwiftPyConsole.initialize()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -10,6 +10,11 @@ import Foundation
 import SwiftPy
 import AuthenticationServices
 
+struct PasskeyRegistration {
+    let session: String
+    let option: PasskeyRegistrationOption
+}
+
 struct PasskeyRegistrationOption: Codable {
     struct User: Codable {
         let id: String
@@ -27,9 +32,20 @@ class PasskeyAction {
         relyingPartyIdentifier: "felfoldy.github.io"
     )
     
-    func register(username: String) async throws {
-        // MARK: GetPasskeyRegistrationOptions
+    func register(username: String) async throws -> Bool {
+        let registration = try await getPasskeyRegistrationOptions(username: username)
+        
+        let credentials = try await passkeyRegistrationRequest(option: registration.option)
+        
+        return try await savePasskey(session: registration.session, credentials: credentials)
+    }
+}
 
+
+private extension PasskeyAction {
+    func getPasskeyRegistrationOptions(username: String) async throws -> PasskeyRegistration {
+        log.info("Query GetPasskeyRegistrationOptions")
+        
         let query = PasskeyPOC.PocGetPasskeyRegistrationOptionsQuery(
             reginput: .init(username: username,
                             challenge: "challenge")
@@ -47,54 +63,62 @@ class PasskeyAction {
             throw URLError(.unknown)
         }
         
-        let option = try JSONDecoder().decode(PasskeyRegistrationOption.self, from: optionsData)
-        
-        guard let challengeData = option.challenge.data(using: .utf8),
-              let userID = option.user.id.data(using: .utf8) else {
-            throw URLError(.unknown)
+        if let jsonObject = try? JSONSerialization.jsonObject(with: optionsData),
+           let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
+           let jsonString = String(data: jsonData, encoding: .utf8) {
+            log.info("GetPasskeyRegistrationOptions response: \(jsonString)")
         }
         
-        // MARK: CredentialRegistration
+        let option = try JSONDecoder().decode(PasskeyRegistrationOption.self, from: optionsData)
+        return PasskeyRegistration(session: options.session, option: option)
+    }
+    
+    func passkeyRegistrationRequest(option: PasskeyRegistrationOption) async throws -> ASAuthorizationPlatformPublicKeyCredentialRegistration {
+        log.info("Passkey registration request")
+
         let request = platformProvider.createCredentialRegistrationRequest(
-            challenge: challengeData,
+            challenge: option.challenge.data(using: .utf8)!,
             name: option.user.name,
-            userID: userID
+            userID: option.user.id.data(using: .utf8)!
         )
-        
+
         let controller = await ASController(authorizationRequests: [request])
         controller.performRequests()
         let credentials = try await controller.credentials()
-        
+
         guard let registrationCredentials = credentials as? ASAuthorizationPlatformPublicKeyCredentialRegistration else {
             throw URLError(.unknown)
         }
+
+        return registrationCredentials
+    }
+
+    func savePasskey(session: String, credentials: ASAuthorizationPlatformPublicKeyCredentialRegistration) async throws -> Bool {
+        log.info("Query SavePasskey")
         
-        // MARK: SavePasskey
-        
-        guard let attestationObject = registrationCredentials.rawAttestationObject else {
-            throw URLError(.unknown)
-        }
+        let id = credentials.credentialID.base64EncodedString()
         
         let jsonDictionary: [String: Any] = [
-            "id": registrationCredentials.credentialID.base64EncodedString(),
-            "rawId": registrationCredentials.credentialID.base64EncodedString(),
+            "id": id,
+            "rawId": id,
             "response": [
-                "clientDataJSON": registrationCredentials.rawClientDataJSON.base64EncodedString(),
-                "attestationObject": attestationObject.base64EncodedString()
+                "clientDataJSON": credentials.rawClientDataJSON.base64EncodedString(),
+                "attestationObject": credentials.rawAttestationObject?.base64EncodedString()
             ],
-            "type": "public-key",
-            "authenticatorAttachment": "platform",
             "clientExtensionResults": [String: Any](),
+            "type": "public-key",
         ]
         
-        let jsonData = try JSONSerialization.data(withJSONObject: jsonDictionary)
+        let jsonData = try JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
         
         guard let json = String(data: jsonData, encoding: .utf8) else {
-            throw URLError(.unknown)
+            return false
         }
         
+        log.trace("SavePasskey response json: \(json)")
+        
         let mutation = PasskeyPOC.PocSavePasskeyMutation(saveinput: .init(
-            session: options.session,
+            session: session,
             response: json
         ))
         
@@ -105,12 +129,12 @@ class PasskeyAction {
         }
         
         guard case let .success(response) = mutationResult,
-            response.data?.pocSavePasskey.verified == true else {
-            log.critical("Not verified!")
+            let verified = response.data?.pocSavePasskey.verified else {
             throw URLError(.unknown)
         }
         
-        log.info("Verified!!!!")
+        log.critical("isVerified: \(verified)")
+        return verified
     }
 }
 

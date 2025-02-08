@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/felfoldy/SwiftPy",
       "state" : {
-        "revision" : "fa9bd4c10fa08e3325c4052d11e084806053c1ba",
-        "version" : "0.2.3"
+        "revision" : "fb04bd94ac0527687c42f00fc1316c7a4cdcb6aa",
+        "version" : "0.2.5"
       }
     },
     {
