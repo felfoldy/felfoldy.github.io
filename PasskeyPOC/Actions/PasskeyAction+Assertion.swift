@@ -24,8 +24,10 @@ extension PasskeyAction {
     func getPasskeyAuthenticationOptions(username: String) async throws -> PasskeyAuthentication {
         log.info("Query GetPasskeyAuthenticationOptions")
 
+        let challengeData = Data("challenge".utf8).base64EncodedString()
+        
         let query = PasskeyPOC.PocGetPasskeyAuthenticationOptionsQuery(
-            authinput: .init(username: username, challenge: "challenge")
+            authinput: .init(username: username, challenge: challengeData)
         )
 
         let result = await withCheckedContinuation { continuation in
@@ -59,8 +61,8 @@ extension PasskeyAction {
             "rawId": id,
             "response": [
                 "clientDataJSON": credential.rawClientDataJSON.base64EncodedString(),
-                "authenticatorData": credential.rawAuthenticatorData.base64EncodedString(),
-                "signature": credential.signature.base64EncodedString(),
+                "authenticatorData": credential.rawAuthenticatorData.base64urlEncodedString(),
+                "signature": credential.signature.base64urlEncodedString(),
             ],
             "clientExtensionResults": [String: Any](),
             "type": "public-key",

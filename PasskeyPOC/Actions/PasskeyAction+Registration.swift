@@ -67,7 +67,7 @@ extension PasskeyAction {
             "rawId": id,
             "response": [
                 "clientDataJSON": credential.rawClientDataJSON.base64EncodedString(),
-                "attestationObject": credential.rawAttestationObject?.base64EncodedString()
+                "attestationObject": credential.rawAttestationObject?.base64urlEncodedString()
             ],
             "clientExtensionResults": [String: Any](),
             "type": "public-key",

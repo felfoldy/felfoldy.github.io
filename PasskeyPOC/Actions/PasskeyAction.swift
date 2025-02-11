@@ -24,7 +24,7 @@ class PasskeyAction {
     func assert(username: String) async throws {
         let authentication = try await getPasskeyAuthenticationOptions(username: username)
         
-        let credential = try await PasskeyServices.assertPasskey(challenge: authentication.option.challenge)
+        let credential = try await PasskeyServices.assertPasskey(option: authentication.option)
         
         try await validatePasskey(session: authentication.session, credential: credential)
     }
