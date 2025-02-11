@@ -46,7 +46,7 @@ class PasskeyServices: ASAuthorizationController, ASAuthorizationControllerDeleg
         continuation?.resume(throwing: error)
     }
     
-    static let platformProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: "felfoldy.github.io")
+    static let platformProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: "kulcsar-tamas-mbh.github.io")
     
     static func registerPasskey(option: PasskeyRegistrationOption) async throws -> RegistrationCredential {
         log.info("Passkey registration")

@@ -9,15 +9,57 @@
 /* Begin PBXBuildFile section */
 		BB1517CB2D4A35830071DACE /* SwiftPyConsole in Frameworks */ = {isa = PBXBuildFile; productRef = BB1517CA2D4A35830071DACE /* SwiftPyConsole */; };
 		BB1517CE2D4B89120071DACE /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = BB1517CD2D4B89120071DACE /* Apollo */; };
+		BBE907E42D5A073D0003461A /* SwiftPyConsole in Frameworks */ = {isa = PBXBuildFile; productRef = BBE907DE2D5A073D0003461A /* SwiftPyConsole */; };
+		BBE907E52D5A073D0003461A /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = BBE907E02D5A073D0003461A /* Apollo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BB9684C02D35256F00E5403A /* PasskeyPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasskeyPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBE907EA2D5A073D0003461A /* PasskeyPOC 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PasskeyPOC 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BBE907EB2D5A073D0003461A /* Exceptions for "PasskeyPOC" folder in "PasskeyPOC 2" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Actions/PasskeyAction.swift,
+				"Actions/PasskeyAction+Assertion.swift",
+				"Actions/PasskeyAction+Registration.swift",
+				Actions/PasskeyServices.swift,
+				Assets.xcassets,
+				ContentView.swift,
+				GraphQL/Operations.graphql,
+				GraphQL/schema.graphqls,
+				Operations/Mutations/PocSavePasskeyMutation.graphql.swift,
+				Operations/Mutations/PocValidatePasskeyMutation.graphql.swift,
+				Operations/Queries/PocGetPasskeyAuthenticationOptionsQuery.graphql.swift,
+				Operations/Queries/PocGetPasskeyRegistrationOptionsQuery.graphql.swift,
+				PasskeyPOC.graphql.swift,
+				PasskeyPOCApp.swift,
+				"Preview Content/Preview Assets.xcassets",
+				Schema/InputObjects/PocGetPasskeyAuthenticationOptionsInput.graphql.swift,
+				Schema/InputObjects/PocGetPasskeyRegistrationOptionsInput.graphql.swift,
+				Schema/InputObjects/PocSavePasskeyInput.graphql.swift,
+				Schema/InputObjects/PocValidatePasskeyInput.graphql.swift,
+				Schema/Objects/Mutation.graphql.swift,
+				Schema/Objects/PocGetPasskeyAuthenticationOptionsPayload.graphql.swift,
+				Schema/Objects/PocGetPasskeyRegistrationOptionsPayload.graphql.swift,
+				Schema/Objects/PocSavePasskeyPayload.graphql.swift,
+				Schema/Objects/PocValidatePasskeyPayload.graphql.swift,
+				Schema/Objects/Query.graphql.swift,
+				Schema/SchemaConfiguration.swift,
+				Schema/SchemaMetadata.graphql.swift,
+			);
+			target = BBE907DD2D5A073D0003461A /* PasskeyPOC 2 */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BB9684C22D35256F00E5403A /* PasskeyPOC */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BBE907EB2D5A073D0003461A /* Exceptions for "PasskeyPOC" folder in "PasskeyPOC 2" target */,
+			);
 			path = PasskeyPOC;
 			sourceTree = "<group>";
 		};
@@ -30,6 +72,15 @@
 			files = (
 				BB1517CB2D4A35830071DACE /* SwiftPyConsole in Frameworks */,
 				BB1517CE2D4B89120071DACE /* Apollo in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBE907E32D5A073D0003461A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBE907E42D5A073D0003461A /* SwiftPyConsole in Frameworks */,
+				BBE907E52D5A073D0003461A /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				BB9684C02D35256F00E5403A /* PasskeyPOC.app */,
+				BBE907EA2D5A073D0003461A /* PasskeyPOC 2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,6 +129,30 @@
 			);
 			productName = PasskeyPOC;
 			productReference = BB9684C02D35256F00E5403A /* PasskeyPOC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BBE907DD2D5A073D0003461A /* PasskeyPOC 2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBE907E72D5A073D0003461A /* Build configuration list for PBXNativeTarget "PasskeyPOC 2" */;
+			buildPhases = (
+				BBE907E22D5A073D0003461A /* Sources */,
+				BBE907E32D5A073D0003461A /* Frameworks */,
+				BBE907E62D5A073D0003461A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BB9684C22D35256F00E5403A /* PasskeyPOC */,
+			);
+			name = "PasskeyPOC 2";
+			packageProductDependencies = (
+				BBE907DE2D5A073D0003461A /* SwiftPyConsole */,
+				BBE907E02D5A073D0003461A /* Apollo */,
+			);
+			productName = PasskeyPOC;
+			productReference = BBE907EA2D5A073D0003461A /* PasskeyPOC 2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -113,6 +189,7 @@
 			projectRoot = "";
 			targets = (
 				BB9684BF2D35256F00E5403A /* PasskeyPOC */,
+				BBE907DD2D5A073D0003461A /* PasskeyPOC 2 */,
 			);
 		};
 /* End PBXProject section */
@@ -125,10 +202,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BBE907E62D5A073D0003461A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BB9684BC2D35256F00E5403A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBE907E22D5A073D0003461A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -328,6 +419,82 @@
 			};
 			name = Release;
 		};
+		BBE907E82D5A073D0003461A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PasskeyPOC/PasskeyPOC.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PasskeyPOC/Preview Content\"";
+				DEVELOPMENT_TEAM = QA23EPZ5C9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felfoldy.PasskeyPOC2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		BBE907E92D5A073D0003461A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PasskeyPOC/PasskeyPOC.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PasskeyPOC/Preview Content\"";
+				DEVELOPMENT_TEAM = QA23EPZ5C9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felfoldy.PasskeyPOC2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -345,6 +512,15 @@
 			buildConfigurations = (
 				BB9684D02D35257000E5403A /* Debug */,
 				BB9684D12D35257000E5403A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBE907E72D5A073D0003461A /* Build configuration list for PBXNativeTarget "PasskeyPOC 2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBE907E82D5A073D0003461A /* Debug */,
+				BBE907E92D5A073D0003461A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -368,6 +544,22 @@
 				minimumVersion = 1.17.0;
 			};
 		};
+		BBE907DF2D5A073D0003461A /* XCRemoteSwiftPackageReference "SwiftPyConsole" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/felfoldy/SwiftPyConsole";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		BBE907E12D5A073D0003461A /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.17.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -379,6 +571,16 @@
 		BB1517CD2D4B89120071DACE /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BB1517CC2D4B89120071DACE /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		BBE907DE2D5A073D0003461A /* SwiftPyConsole */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBE907DF2D5A073D0003461A /* XCRemoteSwiftPackageReference "SwiftPyConsole" */;
+			productName = SwiftPyConsole;
+		};
+		BBE907E02D5A073D0003461A /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBE907E12D5A073D0003461A /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
 		};
 /* End XCSwiftPackageProductDependency section */
