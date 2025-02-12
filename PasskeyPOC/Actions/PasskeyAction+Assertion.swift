@@ -42,7 +42,7 @@ extension PasskeyAction {
             throw URLError(.unknown)
         }
         
-        logJson("GetPasskeyRegistrationOptions response", data: optionsData)
+        logJson("GetPasskeyAuthenticationOptions response", data: optionsData)
         
         let option = try JSONDecoder().decode(PasskeyAuthenticationOption.self, from: optionsData)
         
@@ -88,8 +88,9 @@ extension PasskeyAction {
         }
         
         guard case let .success(response) = mutationResult,
-              let verified = response.data?.pocValidatePasskey else {
-            throw URLError(.unknown)
+              let verified = response.data?.pocValidatePasskey.verified,
+              verified else {
+                  throw PasskeyError.verificationFailed
         }
         
         log.critical("Is verified: \(verified)")

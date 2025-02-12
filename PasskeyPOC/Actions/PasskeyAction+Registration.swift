@@ -46,7 +46,7 @@ extension PasskeyAction {
         guard case let .success(response) = result,
               let options = response.data?.pocGetPasskeyRegistrationOptions,
               let optionsData = Data(base64Encoded: options.options) else {
-            throw URLError(.unknown)
+            throw PasskeyError.registrationFailed
         }
 
         logJson("GetPasskeyRegistrationOptions response", data: optionsData)
@@ -55,7 +55,7 @@ extension PasskeyAction {
         return PasskeyRegistration(session: options.session, option: option)
     }
     
-    func savePasskey(session: String, credential: RegistrationCredential) async throws -> Bool {
+    func savePasskey(session: String, credential: RegistrationCredential) async throws {
         log.info("Mutate SavePasskey")
         
         let id = credential.credentialID.base64EncodedString()
@@ -76,7 +76,7 @@ extension PasskeyAction {
         let jsonData = try JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
         
         guard let json = String(data: jsonData, encoding: .utf8) else {
-            return false
+            throw PasskeyError.responseJsonFailed
         }
         
         log.trace("SavePasskey response json: \(json)")
@@ -91,13 +91,15 @@ extension PasskeyAction {
                 continuation.resume(returning: result)
             }
         }
-        
-        guard case let .success(response) = mutationResult,
-            let verified = response.data?.pocSavePasskey.verified else {
-            throw URLError(.unknown)
+
+        if case let .failure(error) = mutationResult {
+            throw error
         }
-        
-        log.critical("isVerified: \(verified)")
-        return verified
+
+        guard case let .success(response) = mutationResult,
+            let verified = response.data?.pocSavePasskey.verified,
+            verified else {
+                throw PasskeyError.verificationFailed
+        }
     }
 }

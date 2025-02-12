@@ -1,5 +1,5 @@
 {
-  "originHash" : "993c7ac96064f27383554c15db2d8bf0f0d36f5190cec68be86fed1cb5ffc2d1",
+  "originHash" : "44797536ce4392e894dd2e13a6b65470bf7119fb967bac38184895a2c6f1a2e4",
   "pins" : [
     {
       "identity" : "apollo-ios",
@@ -11,30 +11,12 @@
       }
     },
     {
-      "identity" : "debugtools",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/felfoldy/DebugTools",
-      "state" : {
-        "revision" : "9f691b8c6dff83cdef4ec04cc654b5a294429683",
-        "version" : "0.4.0"
-      }
-    },
-    {
-      "identity" : "highlightr",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/raspu/Highlightr",
-      "state" : {
-        "revision" : "bcf2d0590f32ac2528feb72d7e34f5b463801a47",
-        "version" : "2.2.1"
-      }
-    },
-    {
       "identity" : "logtools",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/felfoldy/LogTools.git",
       "state" : {
-        "revision" : "98c2caec20fdd963bf0a9c80c57223a0e19be3b6",
-        "version" : "1.0.2"
+        "revision" : "d0b3a0ce92550b2aa9cd3fd6c25a6441d75a8f50",
+        "version" : "0.9.0"
       }
     },
     {
@@ -44,33 +26,6 @@
       "state" : {
         "revision" : "a95fc6df17d108bd99210db5e8a9bac90fe984b8",
         "version" : "0.15.3"
-      }
-    },
-    {
-      "identity" : "swift-syntax",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax.git",
-      "state" : {
-        "revision" : "0687f71944021d616d34d922343dcef086855920",
-        "version" : "600.0.1"
-      }
-    },
-    {
-      "identity" : "swiftpy",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/felfoldy/SwiftPy",
-      "state" : {
-        "revision" : "fb04bd94ac0527687c42f00fc1316c7a4cdcb6aa",
-        "version" : "0.2.5"
-      }
-    },
-    {
-      "identity" : "swiftpyconsole",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/felfoldy/SwiftPyConsole",
-      "state" : {
-        "branch" : "main",
-        "revision" : "136fa476647bc83b14cfffc525208ac26380546d"
       }
     }
   ],

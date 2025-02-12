@@ -33,6 +33,8 @@ public extension Data {
 enum PasskeyError: LocalizedError {
     case registrationFailed
     case assertionFailed
+    case responseJsonFailed
+    case verificationFailed
     
     var errorDescription: String? {
         switch self {
@@ -40,6 +42,10 @@ enum PasskeyError: LocalizedError {
             return "Passkey registration failed"
         case .assertionFailed:
             return "Passkey assertion failed"
+        case .responseJsonFailed:
+            return "Passkey response JSON parsing failed"
+        case .verificationFailed:
+            return "Passkey verification failed"
         }
     }
 }

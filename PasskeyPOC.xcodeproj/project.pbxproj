@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB1517CB2D4A35830071DACE /* SwiftPyConsole in Frameworks */ = {isa = PBXBuildFile; productRef = BB1517CA2D4A35830071DACE /* SwiftPyConsole */; };
 		BB1517CE2D4B89120071DACE /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = BB1517CD2D4B89120071DACE /* Apollo */; };
-		BB8892192D5B5E4D0057477C /* SwiftPyConsole in Frameworks */ = {isa = PBXBuildFile; productRef = BB8892132D5B5E4D0057477C /* SwiftPyConsole */; };
 		BB88921A2D5B5E4D0057477C /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = BB8892152D5B5E4D0057477C /* Apollo */; };
+		BB92CA682D5C96720022A190 /* LogTools in Frameworks */ = {isa = PBXBuildFile; productRef = BB92CA672D5C96720022A190 /* LogTools */; };
+		BB92CA6B2D5C96810022A190 /* LogTools in Frameworks */ = {isa = PBXBuildFile; productRef = BB92CA6A2D5C96810022A190 /* LogTools */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,33 +22,8 @@
 		BB8892202D5B5E4D0057477C /* Exceptions for "PasskeyPOC" folder in "PasskeyPOC 2" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Actions/PasskeyAction.swift,
-				"Actions/PasskeyAction+Assertion.swift",
-				"Actions/PasskeyAction+Registration.swift",
-				Actions/PasskeyServices.swift,
 				Assets.xcassets,
-				ContentView.swift,
-				GraphQL/Operations.graphql,
-				GraphQL/schema.graphqls,
-				Operations/Mutations/PocSavePasskeyMutation.graphql.swift,
-				Operations/Mutations/PocValidatePasskeyMutation.graphql.swift,
-				Operations/Queries/PocGetPasskeyAuthenticationOptionsQuery.graphql.swift,
-				Operations/Queries/PocGetPasskeyRegistrationOptionsQuery.graphql.swift,
-				PasskeyPOC.graphql.swift,
-				PasskeyPOCApp.swift,
 				"Preview Content/Preview Assets.xcassets",
-				Schema/InputObjects/PocGetPasskeyAuthenticationOptionsInput.graphql.swift,
-				Schema/InputObjects/PocGetPasskeyRegistrationOptionsInput.graphql.swift,
-				Schema/InputObjects/PocSavePasskeyInput.graphql.swift,
-				Schema/InputObjects/PocValidatePasskeyInput.graphql.swift,
-				Schema/Objects/Mutation.graphql.swift,
-				Schema/Objects/PocGetPasskeyAuthenticationOptionsPayload.graphql.swift,
-				Schema/Objects/PocGetPasskeyRegistrationOptionsPayload.graphql.swift,
-				Schema/Objects/PocSavePasskeyPayload.graphql.swift,
-				Schema/Objects/PocValidatePasskeyPayload.graphql.swift,
-				Schema/Objects/Query.graphql.swift,
-				Schema/SchemaConfiguration.swift,
-				Schema/SchemaMetadata.graphql.swift,
 			);
 			target = BB8892122D5B5E4D0057477C /* PasskeyPOC 2 */;
 		};
@@ -70,8 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB8892192D5B5E4D0057477C /* SwiftPyConsole in Frameworks */,
 				BB88921A2D5B5E4D0057477C /* Apollo in Frameworks */,
+				BB92CA6B2D5C96810022A190 /* LogTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,18 +54,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB1517CB2D4A35830071DACE /* SwiftPyConsole in Frameworks */,
 				BB1517CE2D4B89120071DACE /* Apollo in Frameworks */,
+				BB92CA682D5C96720022A190 /* LogTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB92CA692D5C96810022A190 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BB9684B72D35256F00E5403A = {
 			isa = PBXGroup;
 			children = (
 				BB9684C22D35256F00E5403A /* PasskeyPOC */,
+				BB92CA692D5C96810022A190 /* Frameworks */,
 				BB9684C12D35256F00E5403A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -124,8 +107,8 @@
 			);
 			name = "PasskeyPOC 2";
 			packageProductDependencies = (
-				BB8892132D5B5E4D0057477C /* SwiftPyConsole */,
 				BB8892152D5B5E4D0057477C /* Apollo */,
+				BB92CA6A2D5C96810022A190 /* LogTools */,
 			);
 			productName = PasskeyPOC;
 			productReference = BB88921F2D5B5E4D0057477C /* PasskeyPOC 2.app */;
@@ -148,8 +131,8 @@
 			);
 			name = PasskeyPOC;
 			packageProductDependencies = (
-				BB1517CA2D4A35830071DACE /* SwiftPyConsole */,
 				BB1517CD2D4B89120071DACE /* Apollo */,
+				BB92CA672D5C96720022A190 /* LogTools */,
 			);
 			productName = PasskeyPOC;
 			productReference = BB9684C02D35256F00E5403A /* PasskeyPOC.app */;
@@ -180,8 +163,8 @@
 			mainGroup = BB9684B72D35256F00E5403A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				BB1517C92D4A35830071DACE /* XCRemoteSwiftPackageReference "SwiftPyConsole" */,
 				BB1517CC2D4B89120071DACE /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				BB92CA662D5C96720022A190 /* XCRemoteSwiftPackageReference "LogTools" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BB9684C12D35256F00E5403A /* Products */;
@@ -528,28 +511,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BB1517C92D4A35830071DACE /* XCRemoteSwiftPackageReference "SwiftPyConsole" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/felfoldy/SwiftPyConsole";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		BB1517CC2D4B89120071DACE /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.17.0;
-			};
-		};
-		BB8892142D5B5E4D0057477C /* XCRemoteSwiftPackageReference "SwiftPyConsole" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/felfoldy/SwiftPyConsole";
-			requirement = {
-				branch = main;
-				kind = branch;
 			};
 		};
 		BB8892162D5B5E4D0057477C /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
@@ -560,28 +527,36 @@
 				minimumVersion = 1.17.0;
 			};
 		};
+		BB92CA662D5C96720022A190 /* XCRemoteSwiftPackageReference "LogTools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/felfoldy/LogTools";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BB1517CA2D4A35830071DACE /* SwiftPyConsole */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BB1517C92D4A35830071DACE /* XCRemoteSwiftPackageReference "SwiftPyConsole" */;
-			productName = SwiftPyConsole;
-		};
 		BB1517CD2D4B89120071DACE /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BB1517CC2D4B89120071DACE /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
 		};
-		BB8892132D5B5E4D0057477C /* SwiftPyConsole */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BB8892142D5B5E4D0057477C /* XCRemoteSwiftPackageReference "SwiftPyConsole" */;
-			productName = SwiftPyConsole;
-		};
 		BB8892152D5B5E4D0057477C /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BB8892162D5B5E4D0057477C /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
+		};
+		BB92CA672D5C96720022A190 /* LogTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB92CA662D5C96720022A190 /* XCRemoteSwiftPackageReference "LogTools" */;
+			productName = LogTools;
+		};
+		BB92CA6A2D5C96810022A190 /* LogTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB92CA662D5C96720022A190 /* XCRemoteSwiftPackageReference "LogTools" */;
+			productName = LogTools;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

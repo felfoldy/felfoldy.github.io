@@ -8,9 +8,7 @@
 import SwiftUI
 import AuthenticationServices
 import LogTools
-import SwiftPyConsole
 import Apollo
-import SwiftPy
 
 let log = Logger()
 
@@ -18,19 +16,29 @@ struct ContentView: View {
     @State var username: String = ""
     @State var passkeyAction = PasskeyAction()
     
+    @State private var loggedInUserId: String?
+    
     var body: some View {
         NavigationStack {
             VStack {
                 TextField("Email", text: $username)
                 
                 Button("Register", systemImage: "person.badge.key") {
-                    Interpreter.run("register('\(username)')")
+                    Task {
+                        do {
+                            let id = try await passkeyAction.register(username: username)
+                            loggedInUserId = id
+                        } catch {
+                            log.critical(error.localizedDescription)
+                        }
+                    }
                 }
                 
                 Button("Login", systemImage: "person.badge.key") {
                     Task {
                         do {
-                            try await passkeyAction.assert(username: username)
+                            let userId = try await passkeyAction.assert(username: username)
+                            loggedInUserId = userId
                         } catch {
                             log.critical(error.localizedDescription)
                         }
@@ -40,19 +48,8 @@ struct ContentView: View {
             .padding()
             .textFieldStyle(.roundedBorder)
             .buttonStyle(.borderedProminent)
-            .onAppear {
-                let regOptions = #def("register(username: str) -> None") { args in
-                    let username = String(args[0])!
-                    
-                    Task {
-                        do {
-                            _ = try await passkeyAction.register(username: username)
-                        } catch {
-                            log.critical(error.localizedDescription)
-                        }
-                    }
-                }
-                Interpreter.main.bind(regOptions)
+            .navigationDestination(item: $loggedInUserId) { userId in
+                LoginSuccessView(userID: userId)
             }
         }
     }
