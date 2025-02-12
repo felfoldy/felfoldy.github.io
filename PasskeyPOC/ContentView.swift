@@ -13,15 +13,18 @@ import Apollo
 let log = Logger()
 
 struct ContentView: View {
-    @State var username: String = ""
-    @State var passkeyAction = PasskeyAction()
-    
+    @State private var username: String = ""
     @State private var loggedInUserId: String?
+    private let passkeyAction = PasskeyAction()
+    
+    @State private var isAlertPresented = false
+    @State private var error: Error?
     
     var body: some View {
         NavigationStack {
             VStack {
                 TextField("Email", text: $username)
+                    .keyboardType(.emailAddress)
                 
                 Button("Register", systemImage: "person.badge.key") {
                     Task {
@@ -29,7 +32,8 @@ struct ContentView: View {
                             let id = try await passkeyAction.register(username: username)
                             loggedInUserId = id
                         } catch {
-                            log.critical(error.localizedDescription)
+                            self.error = error
+                            isAlertPresented = true
                         }
                     }
                 }
@@ -40,16 +44,26 @@ struct ContentView: View {
                             let userId = try await passkeyAction.assert(username: username)
                             loggedInUserId = userId
                         } catch {
-                            log.critical(error.localizedDescription)
+                            self.error = error
+                            isAlertPresented = true
                         }
                     }
                 }
+                .preferredColorScheme(.dark)
             }
             .padding()
             .textFieldStyle(.roundedBorder)
             .buttonStyle(.borderedProminent)
             .navigationDestination(item: $loggedInUserId) { userId in
                 LoginSuccessView(userID: userId)
+                    .tint(.accentColor)
+            }
+            .alert("Error", isPresented: $isAlertPresented) {
+                Button("Ok") {}
+            } message: {
+                if let errorText = error?.localizedDescription {
+                    Text(errorText)
+                }
             }
         }
     }
