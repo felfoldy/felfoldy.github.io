@@ -50,6 +50,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .tint(.accentColor)
             .padding()
             .textFieldStyle(.roundedBorder)
             .buttonStyle(.borderedProminent)

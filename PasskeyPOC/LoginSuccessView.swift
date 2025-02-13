@@ -14,7 +14,7 @@ struct LoginSuccessView: View {
         VStack {
             Image(systemName: "person.crop.circle.badge.checkmark")
                 .font(.system(size: 160))
-                .foregroundStyle(.green)
+                .foregroundStyle(.accent)
             
             Text("Login successful")
                 .font(.largeTitle)
