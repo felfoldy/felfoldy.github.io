@@ -23,9 +23,15 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
-				"Preview Content/Preview Assets.xcassets",
 			);
 			target = BB8892122D5B5E4D0057477C /* PasskeyPOC 2 */;
+		};
+		BB92CA6E2D5DF2850022A190 /* Exceptions for "PasskeyPOC" folder in "PasskeyPOC" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Assets 2.xcassets",
+			);
+			target = BB9684BF2D35256F00E5403A /* PasskeyPOC */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -33,6 +39,7 @@
 		BB9684C22D35256F00E5403A /* PasskeyPOC */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				BB92CA6E2D5DF2850022A190 /* Exceptions for "PasskeyPOC" folder in "PasskeyPOC" target */,
 				BB8892202D5B5E4D0057477C /* Exceptions for "PasskeyPOC" folder in "PasskeyPOC 2" target */,
 			);
 			path = PasskeyPOC;
@@ -220,7 +227,6 @@
 				CODE_SIGN_ENTITLEMENTS = PasskeyPOC/PasskeyPOC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PasskeyPOC/Preview Content\"";
 				DEVELOPMENT_TEAM = QA23EPZ5C9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -258,7 +264,6 @@
 				CODE_SIGN_ENTITLEMENTS = PasskeyPOC/PasskeyPOC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PasskeyPOC/Preview Content\"";
 				DEVELOPMENT_TEAM = QA23EPZ5C9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -410,7 +415,6 @@
 				CODE_SIGN_ENTITLEMENTS = PasskeyPOC/PasskeyPOC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PasskeyPOC/Preview Content\"";
 				DEVELOPMENT_TEAM = QA23EPZ5C9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -448,7 +452,6 @@
 				CODE_SIGN_ENTITLEMENTS = PasskeyPOC/PasskeyPOC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PasskeyPOC/Preview Content\"";
 				DEVELOPMENT_TEAM = QA23EPZ5C9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

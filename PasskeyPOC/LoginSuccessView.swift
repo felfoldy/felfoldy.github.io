@@ -14,12 +14,17 @@ struct LoginSuccessView: View {
         VStack {
             Image(systemName: "person.crop.circle.badge.checkmark")
                 .font(.system(size: 160))
+                .foregroundStyle(.green)
             
             Text("Login successful")
                 .font(.largeTitle)
             
-            Text("user id: \(userID)")
+            Text("User ID:")
+            Text(userID)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

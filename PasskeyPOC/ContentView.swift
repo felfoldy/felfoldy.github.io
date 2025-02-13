@@ -49,7 +49,6 @@ struct ContentView: View {
                         }
                     }
                 }
-                .preferredColorScheme(.dark)
             }
             .padding()
             .textFieldStyle(.roundedBorder)
